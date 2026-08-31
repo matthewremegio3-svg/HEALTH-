@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Health Community</title>
 
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -21,7 +20,6 @@ body{
     background:#f0f8ff;
     color:#333;
 }
-
 
 nav{
     background:#0077b6;
@@ -57,7 +55,6 @@ nav ul li a{
 nav ul li a:hover{
     color:#caf0f8;
 }
-
 
 .hero{
     height:90vh;
@@ -100,7 +97,6 @@ nav ul li a:hover{
     background:white;
 }
 
-
 .section{
     padding:80px 8%;
 }
@@ -129,13 +125,64 @@ nav ul li a:hover{
     transform:translateY(-8px);
 }
 
-
 .blog-card img{
     width:100%;
     border-radius:12px;
     margin-bottom:15px;
 }
 
+/* Contact & Connect Styles */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    padding: 12px 25px;
+    border: none;
+    background: #0077b6;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #023e8a;
+}
+
+.social-links {
+    margin-top: 15px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 5px 8px 5px 0;
+    padding: 8px 16px;
+    background: #caf0f8;
+    color: #0077b6;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background: #0077b6;
+    color: white;
+}
 
 footer{
     background:#0077b6;
@@ -143,7 +190,6 @@ footer{
     text-align:center;
     padding:25px;
 }
-
 
 .modal{
     display:none;
@@ -189,12 +235,10 @@ footer{
     font-weight:bold;
 }
 
-
 @keyframes fadeIn{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
 }
-
 
 @media(max-width:768px){
     .hero h1{font-size:32px;}
@@ -202,7 +246,6 @@ footer{
 </style>
 </head>
 <body>
-
 
 <nav>
     <h2>Health Community</h2>
@@ -215,7 +258,6 @@ footer{
     </ul>
 </nav>
 
-
 <section class="hero" id="home">
     <div>
         <h1>Your Journey to Better Health Starts Here</h1>
@@ -223,7 +265,6 @@ footer{
         <button onclick="openModal()">Join Community</button>
     </div>
 </section>
-
 
 <section class="section" id="tips">
     <h2>Health Tips</h2>
@@ -263,43 +304,63 @@ footer{
     </div>
 </section>
 
-
 <section class="section" id="blog">
     <h2>Latest Articles</h2>
     <div class="cards">
         <div class="card blog-card">
-            <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74">
+            <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74" alt="Home Workouts">
             <h3>5 Easy Home Workouts</h3>
             <p>Simple exercises you can do at home to stay fit and healthy.</p>
         </div>
         <div class="card blog-card">
-            <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc">
+            <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc" alt="Hydration">
             <h3>The Importance of Hydration</h3>
             <p>Why drinking enough water improves your overall health.</p>
         </div>
         <div class="card blog-card">
-            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352">
+            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352" alt="Stress Management">
             <h3>Managing Stress</h3>
             <p>Practical techniques to maintain mental well-being.</p>
         </div>
     </div>
 </section>
 
-
 <section class="section" id="contact">
-    <h2>Contact Us</h2>
-    <div class="card">
-        <p>Email: support@healthcommunity.com</p>
-        <p>Phone: +63 912 345 6789</p>
-        <p>Location: Philippines</p>
+    <h2>Contact & Connect</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Get In Touch</h3>
+            <p style="margin: 10px 0;"><strong>Email:</strong> support@healthcommunity.com</p>
+            <p style="margin: 10px 0;"><strong>Phone:</strong> +63 912 345 6789</p>
+            <p style="margin: 10px 0;"><strong>Location:</strong> Philippines</p>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            
+            <h3>Connect With Me</h3>
+            <p style="margin: 10px 0 5px; font-size: 14px; color: #666;">Follow our channels for regular health tips and updates:</p>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+                <a href="https://twitter.com" target="_blank">X (Twitter)</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Send a Message</h3>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for reaching out! We will get back to you soon.'); this.reset();" style="margin-top: 15px;">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="4" placeholder="How can we help you?" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
     </div>
 </section>
-
 
 <footer>
     <p>© 2026 Health Community | All Rights Reserved</p>
 </footer>
-
 
 <div class="modal" id="loginModal">
     <div class="modal-content">
@@ -311,19 +372,14 @@ footer{
     </div>
 </div>
 
-
 <script>
-
-
 function openModal(){
     document.getElementById("loginModal").style.display="flex";
 }
 
-
 function closeModal(){
     document.getElementById("loginModal").style.display="none";
 }
-
 
 window.onclick = function(e){
     let modal = document.getElementById("loginModal");
@@ -332,13 +388,10 @@ window.onclick = function(e){
     }
 }
 
-
 function loginUser(){
-
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
-    
     let correctUsername = "admin";
     let correctPassword = "12345";
 
@@ -349,7 +402,6 @@ function loginUser(){
         alert("Invalid Username or Password!");
     }
 }
-
 </script>
 
 </body>
