@@ -8,6 +8,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root {
+    --bg-main: #f0f8ff;
+    --bg-card: #ffffff;
+    --bg-nav: #0077b6;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --text-nav: #ffffff;
+    --accent: #0077b6;
+    --accent-hover: #023e8a;
+    --chip-bg: #caf0f8;
+    --chip-text: #0077b6;
+    --border-color: #cccccc;
+    --divider-color: #eeeeee;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --bg-nav: #023e8a;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-nav: #f8fafc;
+    --accent: #38bdf8;
+    --accent-hover: #0284c7;
+    --chip-bg: #334155;
+    --chip-text: #38bdf8;
+    --border-color: #475569;
+    --divider-color: #334155;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
 *{
     margin:0;
     padding:0;
@@ -17,12 +49,13 @@
 
 body{
     font-family:'Poppins', sans-serif;
-    background:#f0f8ff;
-    color:#333;
+    background: var(--bg-main);
+    color: var(--text-main);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 nav{
-    background:#0077b6;
+    background: var(--bg-nav);
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -30,30 +63,106 @@ nav{
     position:sticky;
     top:0;
     z-index:1000;
+    transition: background 0.3s ease;
 }
 
 nav h2{
-    color:white;
+    color: var(--text-nav);
+    font-size: 24px;
 }
 
-nav ul{
+.nav-links{
     list-style:none;
     display:flex;
+    align-items: center;
 }
 
-nav ul li{
+.nav-links li{
     margin-left:20px;
 }
 
-nav ul li a{
-    color:white;
+.nav-links li a{
+    color: var(--text-nav);
     text-decoration:none;
     font-weight:500;
     transition:0.3s;
 }
 
-nav ul li a:hover{
-    color:#caf0f8;
+.nav-links li a:hover{
+    color: #caf0f8;
+}
+
+.theme-toggle {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: var(--text-nav);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Hamburger Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-nav);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* Mobile Drawer Overlay */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-overlay.active {
+    display: block;
+    opacity: 1;
 }
 
 .hero{
@@ -104,7 +213,7 @@ nav ul li a:hover{
 .section h2{
     text-align:center;
     margin-bottom:40px;
-    color:#0077b6;
+    color: var(--accent);
 }
 
 .cards{
@@ -114,15 +223,20 @@ nav ul li a:hover{
 }
 
 .card{
-    background:white;
+    background: var(--bg-card);
     padding:25px;
     border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow);
     transition:0.3s;
 }
 
 .card:hover{
     transform:translateY(-8px);
+}
+
+.card h3 {
+    color: var(--accent);
+    margin-bottom: 10px;
 }
 
 .blog-card img{
@@ -131,13 +245,14 @@ nav ul li a:hover{
     margin-bottom:15px;
 }
 
-/* Contact & Connect Styles */
 .contact-form input,
 .contact-form textarea {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-main);
     border-radius: 8px;
     font-family: inherit;
     font-size: 14px;
@@ -150,8 +265,8 @@ nav ul li a:hover{
 .contact-form button {
     padding: 12px 25px;
     border: none;
-    background: #0077b6;
-    color: white;
+    background: var(--accent);
+    color: #ffffff;
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
@@ -159,7 +274,7 @@ nav ul li a:hover{
 }
 
 .contact-form button:hover {
-    background: #023e8a;
+    background: var(--accent-hover);
 }
 
 .social-links {
@@ -170,8 +285,8 @@ nav ul li a:hover{
     display: inline-block;
     margin: 5px 8px 5px 0;
     padding: 8px 16px;
-    background: #caf0f8;
-    color: #0077b6;
+    background: var(--chip-bg);
+    color: var(--chip-text);
     text-decoration: none;
     border-radius: 20px;
     font-size: 14px;
@@ -180,15 +295,16 @@ nav ul li a:hover{
 }
 
 .social-links a:hover {
-    background: #0077b6;
-    color: white;
+    background: var(--accent);
+    color: #ffffff;
 }
 
 footer{
-    background:#0077b6;
-    color:white;
+    background: var(--bg-nav);
+    color: var(--text-nav);
     text-align:center;
     padding:25px;
+    transition: background 0.3s ease;
 }
 
 .modal{
@@ -201,28 +317,33 @@ footer{
     background:rgba(0,0,0,0.6);
     justify-content:center;
     align-items:center;
+    z-index: 2000;
 }
 
 .modal-content{
-    background:white;
+    background: var(--bg-card);
+    color: var(--text-main);
     padding:30px;
     width:300px;
     border-radius:10px;
     text-align:center;
+    box-shadow: var(--shadow);
 }
 
 .modal-content input{
     width:100%;
     padding:10px;
     margin:10px 0;
-    border:1px solid #ccc;
+    border:1px solid var(--border-color);
+    background: var(--bg-main);
+    color: var(--text-main);
     border-radius:5px;
 }
 
 .modal-content button{
     width:100%;
     padding:10px;
-    background:#0077b6;
+    background: var(--accent);
     color:white;
     border:none;
     border-radius:5px;
@@ -233,6 +354,7 @@ footer{
     float:right;
     cursor:pointer;
     font-weight:bold;
+    color: var(--text-muted);
 }
 
 @keyframes fadeIn{
@@ -240,8 +362,51 @@ footer{
     to{opacity:1; transform:translateY(0);}
 }
 
+/* Mobile Drawer Responsive Styles */
 @media(max-width:768px){
     .hero h1{font-size:32px;}
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 270px;
+        height: 100vh;
+        background: var(--bg-nav);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 90px 30px 30px;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.25);
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    .nav-links li a {
+        font-size: 18px;
+        display: block;
+        width: 100%;
+    }
+
+    .theme-toggle {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+        margin-top: 10px;
+    }
 }
 </style>
 </head>
@@ -249,14 +414,24 @@ footer{
 
 <nav>
     <h2>Health Community</h2>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#tips">Health Tips</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#" onclick="openModal()">Login</a></li>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home" onclick="closeDrawer()">Home</a></li>
+        <li><a href="#tips" onclick="closeDrawer()">Health Tips</a></li>
+        <li><a href="#blog" onclick="closeDrawer()">Blog</a></li>
+        <li><a href="#contact" onclick="closeDrawer()">Contact</a></li>
+        <li><a href="#" onclick="openModal(); closeDrawer();">Login</a></li>
+        <li>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+        </li>
     </ul>
 </nav>
+
+<div class="nav-overlay" id="navOverlay" onclick="closeDrawer()"></div>
 
 <section class="hero" id="home">
     <div>
@@ -334,10 +509,10 @@ footer{
             <p style="margin: 10px 0;"><strong>Phone:</strong> +63 912 345 6789</p>
             <p style="margin: 10px 0;"><strong>Location:</strong> Philippines</p>
             
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            <hr style="border: 0; border-top: 1px solid var(--divider-color); margin: 20px 0;">
             
             <h3>Connect With Me</h3>
-            <p style="margin: 10px 0 5px; font-size: 14px; color: #666;">Follow our channels for regular health tips and updates:</p>
+            <p style="margin: 10px 0 5px; font-size: 14px; color: var(--text-muted);">Follow our channels for regular health tips and updates:</p>
             <div class="social-links">
                 <a href="https://facebook.com" target="_blank">Facebook</a>
                 <a href="https://instagram.com" target="_blank">Instagram</a>
@@ -365,7 +540,7 @@ footer{
 <div class="modal" id="loginModal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h3>Login</h3>
+        <h3 style="margin-bottom: 10px;">Login</h3>
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
         <button onclick="loginUser()">Login</button>
@@ -373,6 +548,59 @@ footer{
 </div>
 
 <script>
+/* Theme Toggle Logic */
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('themeBtn').textContent = '☀️ Light';
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+        document.getElementById('themeBtn').textContent = '🌙 Dark';
+    }
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const themeBtn = document.getElementById('themeBtn');
+    
+    if (currentTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeBtn.textContent = '🌙 Dark';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeBtn.textContent = '☀️ Light';
+    }
+}
+
+initTheme();
+
+/* Mobile Drawer Logic */
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+const navOverlay = document.getElementById('navOverlay');
+
+function toggleDrawer() {
+    hamburgerBtn.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    navOverlay.classList.toggle('active');
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+}
+
+function closeDrawer() {
+    hamburgerBtn.classList.remove('active');
+    navLinks.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+hamburgerBtn.addEventListener('click', toggleDrawer);
+
+/* Modal Logic */
 function openModal(){
     document.getElementById("loginModal").style.display="flex";
 }
