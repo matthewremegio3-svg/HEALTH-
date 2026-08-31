@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Community</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#f0f8ff;
+    color:#333;
+}
+
+
+nav{
+    background:#0077b6;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 8%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav h2{
+    color:white;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+}
+
+nav ul li{
+    margin-left:20px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#caf0f8;
+}
+
+
+.hero{
+    height:90vh;
+    background:linear-gradient(rgba(0,119,182,0.6), rgba(0,119,182,0.6)),
+    url("https://images.unsplash.com/photo-1505751172876-fa1923c5c528");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:20px;
+    animation:fadeIn 2s ease;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:30px;
+    animation:fadeIn 3s ease;
+}
+
+.hero button{
+    padding:12px 25px;
+    border:none;
+    background:#caf0f8;
+    color:#0077b6;
+    font-weight:600;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hero button:hover{
+    background:white;
+}
+
+
+.section{
+    padding:80px 8%;
+}
+
+.section h2{
+    text-align:center;
+    margin-bottom:40px;
+    color:#0077b6;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+
+.blog-card img{
+    width:100%;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+
+footer{
+    background:#0077b6;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-content{
+    background:white;
+    padding:30px;
+    width:300px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.modal-content input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.modal-content button{
+    width:100%;
+    padding:10px;
+    background:#0077b6;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.close{
+    float:right;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+
+@media(max-width:768px){
+    .hero h1{font-size:32px;}
+}
+</style>
+</head>
+<body>
+
+
+<nav>
+    <h2>Health Community</h2>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tips">Health Tips</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" onclick="openModal()">Login</a></li>
+    </ul>
+</nav>
+
+
+<section class="hero" id="home">
+    <div>
+        <h1>Your Journey to Better Health Starts Here</h1>
+        <p>Trusted wellness resources, expert tips, and a supportive community.</p>
+        <button onclick="openModal()">Join Community</button>
+    </div>
+</section>
+
+
+<section class="section" id="tips">
+    <h2>Health Tips</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Balanced Diet</h3>
+            <p>Eat nutritious meals rich in vegetables, fruits, and protein.</p>
+        </div>
+        <div class="card">
+            <h3>Regular Exercise</h3>
+            <p>Engage in physical activity for at least 30 minutes daily.</p>
+        </div>
+        <div class="card">
+            <h3>Mental Wellness</h3>
+            <p>Practice mindfulness and stress management techniques.</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="section" id="blog">
+    <h2>Latest Articles</h2>
+    <div class="cards">
+        <div class="card blog-card">
+            <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74">
+            <h3>5 Easy Home Workouts</h3>
+            <p>Simple exercises you can do at home to stay fit and healthy.</p>
+        </div>
+        <div class="card blog-card">
+            <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc">
+            <h3>The Importance of Hydration</h3>
+            <p>Why drinking enough water improves your overall health.</p>
+        </div>
+        <div class="card blog-card">
+            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352">
+            <h3>Managing Stress</h3>
+            <p>Practical techniques to maintain mental well-being.</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <div class="card">
+        <p>Email: support@healthcommunity.com</p>
+        <p>Phone: +63 912 345 6789</p>
+        <p>Location: Philippines</p>
+    </div>
+</section>
+
+
+<footer>
+    <p>© 2026 Health Community | All Rights Reserved</p>
+</footer>
+
+
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>Login</h3>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="loginUser()">Login</button>
+    </div>
+</div>
+
+
+<script>
+
+
+function openModal(){
+    document.getElementById("loginModal").style.display="flex";
+}
+
+
+function closeModal(){
+    document.getElementById("loginModal").style.display="none";
+}
+
+
+window.onclick = function(e){
+    let modal = document.getElementById("loginModal");
+    if(e.target == modal){
+        modal.style.display = "none";
+    }
+}
+
+
+function loginUser(){
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    
+    let correctUsername = "admin";
+    let correctPassword = "12345";
+
+    if(username === correctUsername && password === correctPassword){
+        alert("Login Successful! Welcome " + username);
+        closeModal();
+    } else {
+        alert("Invalid Username or Password!");
+    }
+}
+
+</script>
+
+</body>
+</html>
